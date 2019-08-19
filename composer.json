@@ -11,6 +11,6 @@
   "require" : {
     "php": "^7.2",
     "skyline/direct-components": "dev-master",
-    "skyline/component-jquery": "^1"
+    "skyline/component-jquery": "^2"
   }
 }
