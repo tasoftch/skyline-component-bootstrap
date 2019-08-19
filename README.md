@@ -1,3 +1,3 @@
-# Skyline Component jQuery
+# Skyline Component Bootstrap
 
-Prepared component package for skyline cms to provide jQuery in your application
+Prepared component package for skyline cms to provide the full Bootstrap in your application
