@@ -26,7 +26,7 @@ use Skyline\Component\Config\JavaScriptPostLoadComponent;
 
 return [
     'Bootstrap' => [
-        'js' => new JavaScriptPostLoadComponent('https://code.jquery.com/jquery-3.4.1.min.js', "sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="),
+        'js' => new JavaScriptPostLoadComponent('https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js', "sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"),
         "css" => new CSSComponent("https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css", 'all', 'sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu')
     ]
 ];
