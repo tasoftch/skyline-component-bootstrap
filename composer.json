@@ -8,6 +8,12 @@
       "email": "info@tasoft.ch"
     }
   ],
+  "autoload": {
+    "files": [
+      "Constants.php",
+      "Functions.php"
+    ]
+  },
   "require" : {
     "php": "^7.2",
     "skyline/direct-components": "dev-master",
