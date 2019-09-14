@@ -21,4 +21,22 @@
  * SOFTWARE.
  */
 
+function sky_bootstrap_size_classes(int $sizes, string $pattern = "col-%", bool $firstOnly = false) {
+    $classes = [];
 
+    foreach ([
+                 1=>'xs',
+                 2=>'sm',
+                 4=>'md',
+                 8=>'lg',
+                 16 => 'xl'
+             ] as $bit => $sz) {
+        if($sizes & $bit) {
+            if($firstOnly)
+                return str_replace('%', $sz, $pattern);
+            else
+                $classes[] = str_replace('%', $sz, $pattern);
+        }
+    }
+    return $classes;
+}
