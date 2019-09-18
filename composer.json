@@ -1,5 +1,6 @@
 {
   "name": "skyline/component-bootstrap",
+  "description": "Describes a Skyline Application compatible component package to include the Bootstrap CSS framework",
   "license": "MIT",
   "minimum-stability": "dev",
   "authors": [
