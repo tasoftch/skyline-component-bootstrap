@@ -21,33 +21,27 @@
  * SOFTWARE.
  */
 
-namespace Skyline\HTML\Bootstrap\Form\Control\Text;
+namespace Skyline\HTML\Bootstrap\Form\Style;
 
 
-use Skyline\HTML\Element;
-use Skyline\HTML\ElementInterface;
+use Skyline\HTML\Form\Style\AbstractStyleMap;
 
-class TextFieldControl extends \Skyline\HTML\Form\Control\Text\TextFieldControl
+class BootstrapStyleMap extends AbstractStyleMap
 {
-    protected function buildInitialElement(): ?ElementInterface
+    protected function loadStyles(): array
     {
-        $e = new Element("div");
-        $e["class"] = "form-group";
-        return $e;
-    }
+        return [
+            self::FORM_VALIDATED_STYLE => '',
+            self::FORM_VALID_STYLE => 'is-valid',
+            self::FORM_INVALID_STYLE => 'is-invalid',
 
-    protected function buildControl(): ElementInterface
-    {
-        $control = parent::buildControl();
-        $control["class"] = 'form-control';
-        return $control;
-    }
+            self::FEEDBACK_VALID_STYLE => 'valid-feedback',
+            self::FEEDBACK_INVALID_STYLE => 'invalid-feedback',
 
-    protected function buildDescriptionElement(): ?ElementInterface
-    {
-        if($desc = parent::buildDescriptionElement()) {
-            $desc["class"] = 'form-text text-muted';
-        }
-        return $desc;
+            self::CONTAINER_STYLE => 'form-group',
+            self::CONTROL_STYLE => 'form-control',
+            self::CONTROL_REQUIRED_STYLE => 'required',
+            self::CONTROL_DESCRIPTION_STYLE => 'form-text text-muted'
+        ];
     }
 }
