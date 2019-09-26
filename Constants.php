@@ -27,3 +27,7 @@ define("SKY_BOOTSTRAP_SM", 2);
 define("SKY_BOOTSTRAP_MD", 4);
 define("SKY_BOOTSTRAP_LG", 8);
 define("SKY_BOOTSTRAP_XL", 16);
+
+define("SKY_BOOTSTRAP_SMALL", -1);
+define("SKY_BOOTSTRAP_NORMAL", 0);
+define("SKY_BOOTSTRAP_LARGE", 1);

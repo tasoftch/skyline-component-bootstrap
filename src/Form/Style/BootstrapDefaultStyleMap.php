@@ -26,7 +26,7 @@ namespace Skyline\HTML\Bootstrap\Form\Style;
 
 use Skyline\HTML\Form\Style\AbstractStyleMap;
 
-class BootstrapStyleMap extends AbstractStyleMap
+class BootstrapDefaultStyleMap extends AbstractStyleMap
 {
     protected function loadStyles(): array
     {
