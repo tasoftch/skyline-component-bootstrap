@@ -51,9 +51,9 @@ class BootstrapGridStyleMap implements AdvancedStyleMapInterface
             list($label, $cnt, $bp) = $this->gridSettings["size"];
 
             if($forLabel)
-                $classes = array_merge($classes, sky_bootstrap_size_classes($bp, "col-%s-$label"));
+                $classes = array_merge($classes, sky_bootstrap_size_classes($bp, "col-%-$label"));
             else
-                $classes = array_merge($classes, sky_bootstrap_size_classes($bp, "col-%s-$cnt"));
+                $classes = array_merge($classes, sky_bootstrap_size_classes($bp, "col-%-$cnt"));
         }
         return $classes;
     }
