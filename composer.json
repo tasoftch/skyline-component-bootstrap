@@ -13,11 +13,15 @@
     "files": [
       "Constants.php",
       "Functions.php"
-    ]
+    ],
+    "psr-4": {
+      "Skyline\\HTML\\Bootstrap\\": "src"
+    }
   },
   "require" : {
     "php": "^7.2",
     "skyline/direct-components": "dev-master",
-    "skyline/component-jquery": "^3"
+    "skyline/component-jquery": "^3",
+    "skyline/html-form": "dev-master"
   }
 }
