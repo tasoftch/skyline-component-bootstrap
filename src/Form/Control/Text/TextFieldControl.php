@@ -43,7 +43,7 @@ class TextFieldControl extends \Skyline\HTML\Form\Control\Text\TextFieldControl
         return $control;
     }
 
-    public function buildDescriptionElement()
+    protected function buildDescriptionElement(): ?ElementInterface
     {
         if($desc = parent::buildDescriptionElement()) {
             $desc["class"] = 'form-text text-muted';
