@@ -41,7 +41,10 @@ class BootstrapStyleMap extends AbstractStyleMap
             self::CONTAINER_STYLE => 'form-group',
             self::CONTROL_STYLE => 'form-control',
             self::CONTROL_REQUIRED_STYLE => 'required',
-            self::CONTROL_DESCRIPTION_STYLE => 'form-text text-muted'
+            self::CONTROL_DESCRIPTION_STYLE => 'form-text text-muted',
+
+            self::CONTROL_VALID_STYLE => 'is-valid',
+            self::CONTROL_INVALID_STYLE => 'is-invalid'
         ];
     }
 }
