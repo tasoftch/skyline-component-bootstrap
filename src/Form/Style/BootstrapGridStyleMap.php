@@ -28,6 +28,7 @@ use Skyline\HTML\Element;
 use Skyline\HTML\ElementInterface;
 use Skyline\HTML\Form\Control\Button\ButtonControl;
 use Skyline\HTML\Form\Control\ControlInterface;
+use Skyline\HTML\Form\Control\Text\StaticTextFieldControl;
 use Skyline\HTML\Form\Style\AbstractStyleMap;
 
 class BootstrapGridStyleMap extends AbstractStyleMap
@@ -72,7 +73,7 @@ class BootstrapGridStyleMap extends AbstractStyleMap
         if($elementName == self::CONTAINER_ELEMENT) {
             $element["class"] = 'form-group row';
         } elseif($elementName == self::CONTROL_ELEMENT) {
-            if(!($control instanceof ButtonControl)) {
+            if(!($control instanceof ButtonControl) && !($control instanceof StaticTextFieldControl)) {
                 $classes = ['form-control'];
 
                 if($this->isControlRequired($control))
