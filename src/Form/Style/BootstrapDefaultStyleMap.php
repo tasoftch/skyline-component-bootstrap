@@ -23,10 +23,10 @@
 
 namespace Skyline\HTML\Bootstrap\Form\Style;
 
+use Skyline\HTML\Form\Control\Button\ButtonControl;
+use Skyline\HTML\Form\Style\DynamicStyleMap;
 
-use Skyline\HTML\Form\Style\AbstractStyleMap;
-
-class BootstrapDefaultStyleMap extends AbstractStyleMap
+class BootstrapDefaultStyleMap extends DynamicStyleMap
 {
     protected function loadStyles(): array
     {
@@ -39,7 +39,10 @@ class BootstrapDefaultStyleMap extends AbstractStyleMap
             self::FEEDBACK_INVALID_STYLE => 'invalid-feedback',
 
             self::CONTAINER_STYLE => 'form-group',
-            self::CONTROL_STYLE => 'form-control',
+            self::CONTROL_STYLE => [
+                self::DEFAULT_STYLE => 'form-control',
+                ButtonControl::class => NULL // Normally button classes already are styled and they do not need to be validated at all.
+            ],
             self::CONTROL_REQUIRED_STYLE => 'required',
             self::CONTROL_DESCRIPTION_STYLE => 'form-text text-muted',
 
