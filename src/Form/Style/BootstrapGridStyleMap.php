@@ -26,11 +26,11 @@ namespace Skyline\HTML\Bootstrap\Form\Style;
 
 use Skyline\HTML\Element;
 use Skyline\HTML\ElementInterface;
-use Skyline\HTML\Form\Control\AbstractControl;
+use Skyline\HTML\Form\Control\Button\ButtonControl;
 use Skyline\HTML\Form\Control\ControlInterface;
-use Skyline\HTML\Form\Style\AdvancedStyleMapInterface;
+use Skyline\HTML\Form\Style\AbstractStyleMap;
 
-class BootstrapGridStyleMap implements AdvancedStyleMapInterface
+class BootstrapGridStyleMap extends AbstractStyleMap
 {
     private $controlSize = SKY_BOOTSTRAP_NORMAL;
 
@@ -38,6 +38,13 @@ class BootstrapGridStyleMap implements AdvancedStyleMapInterface
         'size' => [2, 10, SKY_BOOTSTRAP_SM]
     ];
 
+    /**
+     * Create css classes
+     *
+     * @param bool $forLabel
+     * @return array
+     * @internal
+     */
     private function getApplyedGridClasses(bool $forLabel) {
         $classes = [];
         if(isset($this->gridSettings["def"])) {
@@ -60,23 +67,26 @@ class BootstrapGridStyleMap implements AdvancedStyleMapInterface
 
 
 
-    public function styleUpElement(ElementInterface $element, string $elementName, ControlInterface $control): ElementInterface
+    public function styleUpElement(ElementInterface $element, string $elementName, ?ControlInterface $control): ElementInterface
     {
         if($elementName == self::CONTAINER_ELEMENT) {
             $element["class"] = 'form-group row';
         } elseif($elementName == self::CONTROL_ELEMENT) {
-            $classes = ['form-control'];
+            if(!($control instanceof ButtonControl)) {
+                $classes = ['form-control'];
 
-            if($control instanceof AbstractControl) {
-                if($control->isRequired())
+                if($this->isControlRequired($control))
                     $classes[] = "required";
-                if($control->isValidated() && $control->isValid())
-                    $classes[] = 'is-valid';
-                if($control->isValidated() && !$control->isValid())
-                    $classes[] = 'is-invalid';
+                if($this->isControlValidated($control)) {
+                    $classes[] = $this->isControlValid($control) ? 'is-valid' : 'is-invalid';
+                }
+                if(($size = $this->getControlSize()) != SKY_BOOTSTRAP_NORMAL) {
+                    $classes[] = $size == SKY_BOOTSTRAP_LARGE ? 'form-control-lg' : 'form-control-sm';
+                }
+
+                $element["class"] = implode(" ", $classes);
             }
 
-            $element["class"] = implode(" ", $classes);
             $e = new Element("div");
             $e["class"] = implode(" ", $this->getApplyedGridClasses(false));
             $e->appendElement($element);
@@ -85,25 +95,13 @@ class BootstrapGridStyleMap implements AdvancedStyleMapInterface
             $element["class"] = implode(" ", $this->getApplyedGridClasses(true));
         } elseif($elementName == self::DESCRIPTION_ELEMENT) {
             $element["class"] = 'form-text text-muted';
-        } elseif($elementName == self::FEEDBACK_ELEMENT && $control instanceof AbstractControl) {
-            $element["class"] = $control->isValid() ? 'valid-feedback' : 'invalid-feedback';
+        } elseif($elementName == self::FEEDBACK_VALID_ELEMENT) {
+            $element["class"] =  'valid-feedback';
+        } elseif($elementName == self::FEEDBACK_INVALID_ELEMENT) {
+            $element["class"] =  'invalid-feedback';
         }
 
         return $element;
-    }
-
-
-
-    // Do not use the primary style up mechanism
-
-    public function getStyleClass(string $style): ?string
-    {
-        return NULL;
-    }
-
-    public function getStyleClasses(array $styles): ?string
-    {
-        return NULL;
     }
 
     /**
