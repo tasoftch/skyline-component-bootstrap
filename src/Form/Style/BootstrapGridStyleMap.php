@@ -72,6 +72,24 @@ class BootstrapGridStyleMap extends AbstractStyleMap
     {
         if($elementName == self::CONTAINER_ELEMENT) {
             $element["class"] = 'form-group row';
+
+            if($element instanceof Element) {
+                /** @var Element $cnt */
+                if($cnt = $element->getElementsByClass('control')[0] ?? NULL) {
+                    if($e = $element->getElementsByClass("valid-feedback")[0] ?? NULL) {
+                        $element->removeElement($e);
+                        $cnt->appendElement($e);
+                    }
+                    if($e = $element->getElementsByClass("invalid-feedback")[0] ?? NULL) {
+                        $element->removeElement($e);
+                        $cnt->appendElement($e);
+                    }
+                    if($e = $element->getElementsByClass("text-muted")[0] ?? NULL) {
+                        $element->removeElement($e);
+                        $cnt->appendElement($e);
+                    }
+                }
+            }
         } elseif($elementName == self::CONTROL_ELEMENT) {
             if(!($control instanceof ButtonControl) && !($control instanceof StaticTextFieldControl)) {
                 $classes = ['form-control'];
