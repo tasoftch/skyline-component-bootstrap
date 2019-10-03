@@ -21,13 +21,52 @@
  * SOFTWARE.
  */
 
+namespace Skyline\HTML\Bootstrap;
 
-define("SKY_BOOTSTRAP_XS", 1);
-define("SKY_BOOTSTRAP_SM", 2);
-define("SKY_BOOTSTRAP_MD", 4);
-define("SKY_BOOTSTRAP_LG", 8);
-define("SKY_BOOTSTRAP_XL", 16);
 
-define("SKY_BOOTSTRAP_SMALL", -1);
-define("SKY_BOOTSTRAP_NORMAL", 0);
-define("SKY_BOOTSTRAP_LARGE", 1);
+class Size extends AbstractBreakpoint
+{
+    const SMALL = -1;
+    const NORMAL = 0;
+    const LARGE = 1;
+
+    /**
+     * Size constructor.
+     * @param $size
+     */
+    public function __construct($size)
+    {
+        parent::__construct($size, static::BREAKPOINT_DEFAULT);
+    }
+
+    /**
+     * Adds a new size to a given breakpoint
+     *
+     * @param int $size
+     * @param string $breakpoint
+     * @return static
+     */
+    public function addSize(int $size, string $breakpoint) {
+        $this->setBreakpoint($breakpoint, $size);
+        return $this;
+    }
+
+    /**
+     * @param int $size
+     * @return static
+     */
+    public function setDefaultSize(int $size) {
+        $this->setBreakpoint(static::BREAKPOINT_DEFAULT, $size);
+        return $this;
+    }
+
+    protected function getFormattedValue($value, $breakpoint): string
+    {
+        switch ($value) {
+            case self::SMALL: return "sm";
+            case self::LARGE: return "lg";
+            default:
+        }
+        return "";
+    }
+}

@@ -10,10 +10,6 @@
     }
   ],
   "autoload": {
-    "files": [
-      "Constants.php",
-      "Functions.php"
-    ],
     "psr-4": {
       "Skyline\\HTML\\Bootstrap\\": "src"
     }
@@ -23,5 +19,8 @@
     "skyline/direct-components": "dev-master",
     "skyline/component-jquery": "^3",
     "skyline/html-form": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "dev-master"
   }
 }
