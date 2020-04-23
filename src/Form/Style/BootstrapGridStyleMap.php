@@ -24,6 +24,7 @@
 namespace Skyline\HTML\Bootstrap\Form\Style;
 
 
+use Skyline\HTML\Bootstrap\Size;
 use Skyline\HTML\Element;
 use Skyline\HTML\ElementInterface;
 use Skyline\HTML\Form\Control\Button\ButtonControl;
@@ -33,10 +34,10 @@ use Skyline\HTML\Form\Style\AbstractStyleMap;
 
 class BootstrapGridStyleMap extends AbstractStyleMap
 {
-    private $controlSize = SKY_BOOTSTRAP_NORMAL;
+    private $controlSize = Size::NORMAL;
 
     private $gridSettings = [
-        'size' => [2, 10, SKY_BOOTSTRAP_SM]
+        'size' => [2, 10, Size::BREAKPOINT_MEDIUM]
     ];
 
     /**
