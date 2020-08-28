@@ -34,13 +34,13 @@ return [
 		'css' => new CSSComponent(
 			"/Public/css/bootstrap.min.css",
 			'all',
-			'sha384-'.base64_decode( hash_file("sha384", $css, true)),
+			'sha384-'.base64_encode( hash_file("sha384", $css, true)),
 			NULL,
 			CompilerContext::getCurrentCompiler()->getRelativeProjectPath($css)
 		),
         'js' => new JavaScriptPostLoadComponent(
         	'/Public/js/bootstrap.bundle.min.js',
-			'sha384-'.base64_decode( hash_file("sha384", $js, true)),
+			'sha384-'.base64_encode( hash_file("sha384", $js, true)),
 			NULL,
 			CompilerContext::getCurrentCompiler()->getRelativeProjectPath($js)
 		),
