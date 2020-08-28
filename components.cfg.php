@@ -24,11 +24,26 @@
 use Skyline\Component\Config\AbstractComponent;
 use Skyline\Component\Config\CSSComponent;
 use Skyline\Component\Config\JavaScriptPostLoadComponent;
+use Skyline\Compiler\CompilerContext;
+
+$css = __DIR__ . "/bootstrap.min.css";
+$js = __DIR__ . "/bootstrap.bundle.min.js";
 
 return [
     'Bootstrap' => [
-        'js' => new JavaScriptPostLoadComponent('https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.bundle.min.js', "sha384-VoPFvGr9GxhDT3n8vqqZ46twP5lgex+raTCfICQy73NLhN7ZqSfCtfSn4mLA2EFA"),
-        "css" => new CSSComponent("https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css", 'all', 'sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA'),
+		'css' => new CSSComponent(
+			"/Public/css/bootstrap.min.css",
+			'all',
+			'sha384-'.base64_decode( hash_file("sha384", $css, true)),
+			NULL,
+			CompilerContext::getCurrentCompiler()->getRelativeProjectPath($css)
+		),
+        'js' => new JavaScriptPostLoadComponent(
+        	'/Public/js/bootstrap.bundle.min.js',
+			'sha384-'.base64_decode( hash_file("sha384", $js, true)),
+			NULL,
+			CompilerContext::getCurrentCompiler()->getRelativeProjectPath($js)
+		),
         AbstractComponent::COMP_REQUIREMENTS => [
             "jQuery"
         ]
